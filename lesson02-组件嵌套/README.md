@@ -56,46 +56,11 @@ $ npm install babel-core babel-loader babel-preset-react less-loader css-loader 
 
 一个TODO应用，首先一个容器，然后下面是标题，输入框，TODO列表。所以，一共是三个组件，并且平级。
 
-#### 组件通信
-
-我们在输入框里面输入了TODO信息，点击确认，然后TODO列表里会自动增加一行。这就是唯一的组件间通信。
-
 ## 编写组件
 
 ### 组件树
 
 我们将所有的组件放在`./components/`文件夹里，只对外暴露出`./components/App.jsx`文件，将所有的组件都打包在这里面。然后在`./index.jsx`文件中渲染。
-
-``` jsx
-// ./index.jsx
-var React = require('react'),
-	ReactDOM = require('react-dom'),
-	App = require('./components/App');
-
-ReactDOM.render(<App />, document.getElementById('app'));
-```
-
-``` jsx
-// ./components/App.jsx
-var React = require('react'),
-	Title = require('./Title'),
-	Input = require('./Input'),
-	List = require('./List');
-
-var App = React.createClass({
-	render: function() {
-		return (
-			<div>
-				<Title />
-				<Input />
-				<List />
-			</div>	
-		)
-	}
-});
-
-module.exports = App;
-```
 
 ``` jsx
 // ./components/Title.jsx
@@ -147,6 +112,37 @@ var List = React.createClass({
 })
 
 module.exports = List;
+```
+
+``` jsx
+// ./components/App.jsx
+var React = require('react'),
+	Title = require('./Title'),
+	Input = require('./Input'),
+	List = require('./List');
+
+var App = React.createClass({
+	render: function() {
+		return (
+			<div>
+				<Title />
+				<Input />
+				<List />
+			</div>	
+		)
+	}
+});
+
+module.exports = App;
+```
+
+``` jsx
+// ./index.jsx
+var React = require('react'),
+	ReactDOM = require('react-dom'),
+	App = require('./components/App');
+
+ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
 ``` sh

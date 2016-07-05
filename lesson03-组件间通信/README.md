@@ -242,7 +242,7 @@ var Input = React.createClass({
 });
 ```
 
-这里我们绑定了一个`ref`属性到`input`元素上去，然后再通过`this.refs`获取这个元素的`支撑实例`，然后通过设置它的`value`为空，将输入内容清空。
+这里我们绑定了一个`ref`属性到`input`元素上去，然后再通过`this.refs`获取这个元素的`支撑实例`，然后通过设置它的`value`为空，将输入内容清空。具体有关于`ref`的相关信息，请移步[React中文文档](http://reactjs.cn/react/docs/more-about-refs.html)。
 
 ### 数据的删除
 
@@ -316,7 +316,7 @@ var App = React.createClass({
 	 */
 	_del: function(_id) {
 		var newList = this.state.todoList;
-		this.state.todoList.map(function(item) {
+		this.state.todoList.map(function(item, i) {
 			if (item.id == _id) {
 				newList.splice(i, 1);
 				this.setState({
@@ -336,6 +336,6 @@ var App = React.createClass({
 	}
 });
 ```
-
+至此，我们完成数据的增加和删除，无非就是利用`props`翻来覆去地折腾。
 
 
