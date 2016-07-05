@@ -1,0 +1,20 @@
+{
+  "name": "react-webpack",
+  "version": "1.0.0",
+  "description": "这是我们推荐的第一步。",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.11.1"
+  }
+}
