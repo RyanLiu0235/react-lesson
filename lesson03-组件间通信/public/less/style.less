@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+#app {
+    width: 260px;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px #e0e0e0 solid;
+    background-color: #fefefe;
+}
+
+.table_row {
+    width: 260px;
+    height: 30px;
+    list-style: none;
+    border-bottom: 1px #e0e0e0 solid;
+    .clearfix();
+    .table_control {
+        float: left;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #333;
+        input {
+            display: block;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            border: none;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    .table_action {
+        float: left;
+        width: 30px;
+        span {
+            display: block;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+}
