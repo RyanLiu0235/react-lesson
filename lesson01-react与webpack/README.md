@@ -10,13 +10,15 @@
 
 `Webpack`是一个兼具编译与打包功能的构建工具，具体可以看看 [Webpack 入门指迷 - 题叶, JiyinYiyong - SegmentFault](https://segmentfault.com/a/1190000002551952)。它把所有的资源都通过loader打包进去，所有的资源最终都编译成为一个文件，被引入到html页面中。
 
-### 安装`Webpack`
+### 安装Webpack
 
 ``` sh
 $ sudo npm install -g webpack
 ```
 
 这里我们需要全局安装`webpack`，因为后面我们会用到这个命令。
+
+具体`webpack`的用法，请参照[Peter Hunt的 webpack-howto](https://github.com/petehunt/webpack-howto/blob/master/README-zh.md)，跟着过一遍基本上就明白`webpack`的用法了。还是很清晰的。
 
 ### webpack如何工作
 
@@ -61,7 +63,7 @@ module.exports = {
 
 * resolve: 加载文件的后缀名。也就是说你后面写过的文件后缀在加载的时候就可以省略不写了。
 
-### 一个简单的 React + Webpack 例子
+## 一个简单的 React + Webpack 例子
 
 本课程中含有一个简单的例子。这是个很简单的例子，所有的内容只是在页面上输出了一个`hello world!`。我们来一步步实现这个输出。
 
@@ -111,9 +113,11 @@ OK，这里我们需要的包就完全安装好了。
 
 然后，我们来写React组件。我们的功能就是输出一个`hello world`，那么，就只是需要一个组件。
 
+关于组件的划分，请大家移步到React中文文档对应部分，看看[深入理解 React](http://reactjs.cn/react/docs/thinking-in-react.html)
+
 ``` jsx
 var React = require('react'),
-	ReactDom = require('react-dom');
+	ReactDOM = require('react-dom');
 
 var HelloWorld = React.createClass({
 	render: function() {
@@ -125,7 +129,7 @@ var HelloWorld = React.createClass({
 	}
 });
 
-ReactDom.render(<HelloWorld />, document.querySelector('#app'));
+ReactDOM.render(<HelloWorld />, document.querySelector('#app'));
 ```
 
 在前一节里我已经讲过了这个React组件是如何工作的。这里就略过了。
@@ -138,9 +142,11 @@ ReactDom.render(<HelloWorld />, document.querySelector('#app'));
 
 ``` javascript
 "scripts": {
-	"build": "webpack"
+	"build": "webpack --watch -d"
 }
 ```
+
+> --watch 参数就是监控文件的变化，只要文件变动，就重新编译。-d 参数就是开启`sourcemap`，方便调试。
 
 然后打开终端，编译
 

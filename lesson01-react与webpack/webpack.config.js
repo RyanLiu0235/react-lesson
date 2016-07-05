@@ -16,9 +16,15 @@ module.exports = {
             query: {
                 presets: ['react']
             }
+        },{
+            test: /\.less$/,
+            loader: 'style!css!less'
+        },{
+            test: /\.(jpeg?|png|gif)$/,
+            loader: 'url-loader?limit=8192'
         }]
     },
     resolve: {
-    	extensions: ['', '.jsx', '.js']
+    	extensions: ['', '.jsx', '.js', '.less', '.jpg', '.jpeg', '.png', '.gif']
     }
 }
