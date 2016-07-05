@@ -11,7 +11,8 @@ var Input = React.createClass({
 	 * 数据改动
 	 */
 	_change: function(e) {
-		var _v = e.target.value;
+		var _v = e.target.value.trim();
+		if (!_v) return;
 		this.setState({
 			content: _v,
 			id: Date.now()
@@ -21,6 +22,7 @@ var Input = React.createClass({
 	 * 数据保存
 	 */
 	_save: function() {
+		if (!this.state.content) return;
 		// 通过`props`，调用父组件的方法
 		this.props._onSave(this.state);
 		this.refs.input.value = "";
