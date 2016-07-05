@@ -8,6 +8,10 @@
 
 * [lesson01-react与webpack](https://github.com/stop2stare/react-lesson/tree/master/lesson01-react与webpack)
 
+* [lesson02-组件嵌套](https://github.com/stop2stare/react-lesson/tree/master/lesson02-组件嵌套)
+
+* [lesson03-组件间通信](https://github.com/stop2stare/react-lesson/tree/master/lesson03-组件间通信)
+
 ## Reference
 
 * [React中文文档](http://reactjs.cn/react/docs/getting-started.html)
