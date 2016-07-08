@@ -22,7 +22,7 @@ var Input = React.createClass({
 	 * 数据保存
 	 */
 	_save: function() {
-		if (!this.state.content) return;
+		if (!this.state.content.length) return;
 		// 通过`props`，调用父组件的方法
 		this.props._onSave(this.state);
 		this.refs.input.value = "";
