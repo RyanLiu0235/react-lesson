@@ -197,7 +197,7 @@ var App = React.createClass({
 
 这就是React里组件之间通信的基本过程。
 
-最后，我们还有一点善后的工作：在用户确认提交数据之后，将原先输入的数据清空。修改`Input.jsx`
+最后，我们还有一点善后的工作：在用户确认提交数据之后，将原先输入的数据清空，同时归零子组件的state。修改`Input.jsx`
 
 ``` jsx
 // ./components/Input.jsx
@@ -226,6 +226,10 @@ var Input = React.createClass({
 		// 通过`props`，调用父组件的方法
 		this.props._onSave(this.state);
 		this.refs.input.value = "";
+		this.setState({
+			content: '',
+			id: undefined
+		});
 	},
 	render: function() {
 		return (
