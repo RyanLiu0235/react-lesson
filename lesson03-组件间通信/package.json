@@ -1,7 +1,7 @@
 {
-  "name": "components-state",
+  "name": "react组件间通信",
   "version": "1.0.0",
-  "description": "一个项目肯定不会只有一个组件，而且组件之间也肯定不会都平级关系，这时候我们需要多个组件，它们之间有平级，也有父子关系。这时候还会涉及到组件之间通信。",
+  "description": "组件间通信",
   "main": "index.js",
   "scripts": {
     "build": "webpack --watch -d"

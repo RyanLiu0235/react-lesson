@@ -1,16 +1,19 @@
 {
-  "name": "react-webpack",
+  "name": "react-router-SPA",
   "version": "1.0.0",
-  "description": "react-webpack",
+  "description": "利用React-Router搭建单页应用",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --watch -d"
+    "build": "webpack --watch -d",
+    "start": "webpack-dev-server --port 5000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0"
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-router": "^2.5.2",
+    "superagent": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -19,7 +22,7 @@
     "css-loader": "^0.23.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7"
+    "object-assign": "^4.1.0",
+    "style-loader": "^0.13.1"
   }
 }
