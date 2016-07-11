@@ -7,12 +7,13 @@
     "build": "webpack --watch -d",
     "start": "webpack-dev-server --port 5000"
   },
-  "author": "",
+  "author": "liucheng",
   "license": "ISC",
   "dependencies": {
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2",
+    "object-assign": "^4.1.0",
     "superagent": "^2.0.0"
   },
   "devDependencies": {
@@ -22,7 +23,6 @@
     "css-loader": "^0.23.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "object-assign": "^4.1.0",
     "style-loader": "^0.13.1"
   }
 }

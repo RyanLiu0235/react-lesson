@@ -12,6 +12,8 @@
 
 * [lesson03-组件间通信](https://github.com/stop2stare/react-lesson/tree/master/lesson03-组件间通信)
 
+* [lesson04-利用React-Router搭建SPA](https://github.com/stop2stare/react-lesson/tree/master/lesson04-利用React-Router搭建SPA)
+
 ## Reference
 
 * [React中文文档](http://reactjs.cn/react/docs/getting-started.html)

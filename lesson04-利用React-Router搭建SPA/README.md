@@ -71,6 +71,76 @@ module.exports = Detail;
 
 然后，我们还需要在数据里面增加一些字段，同时，为了我们查找数据以及修改数据的方便，我们还需要将数据结构从数组改成`id`为主键的对象结构。所以我们数据渲染的循环也要改一下。下面我们将所有的代码都改写一遍。
 
+
+``` jsx
+// ./components/TodoIndex.jsx
+
+var React = require('react'),
+	Input = require('./Input'),
+	List = require('./List');
+
+
+var App = React.createClass({
+	getInitialState: function() {
+	    return {
+	    	todoList: {
+		        1467726253744: {
+		            content: '吃饭饭',
+		            complete: 1468216457448
+		        },
+		        1467726253746: {
+		            content: '睡觉觉',
+		            complete: undefined
+		        },
+		        1467726253749: {
+		            content: '打豆豆',
+		            complete: 1468216458448
+		        }
+	        }
+	    };
+	},
+	/**
+	 * 保存数据
+	 * @param  {[number]} id [新加入的数据的id]
+	 * @param  {[content]} content [新加入的数据的内容]
+	 */
+	_save: function(id, content) {
+		var _newList = this.state.todoList;
+		var _newTodo = {
+			content: content,
+			complete: undefined
+		}
+		_newList[id] = _newTodo;
+		// setState方法改动`state`，同时引用了`state`的组件都会重新渲染
+		this.setState({
+			todoList: _newList
+		});
+	},
+	/**
+	 * 删除数据
+	 * @return {[type]} [description]
+	 */
+	_del: function(id) {
+		var _newList = this.state.todoList;
+		delete _newList[id];
+		this.setState({
+			todoList: _newList
+		})
+	},
+	render: function() {
+		return (
+			<div>
+				<h2 className="title">TODO</h2>
+				<Input _onSave={this._save} />
+				<List _onDel={this._del} todoList={this.state.todoList} />
+			</div>	
+		);
+	}
+});
+
+module.exports = App;
+```
+
 ``` jsx
 // ./components/Input.jsx
 var React = require('react');
@@ -184,80 +254,38 @@ module.exports = List;
 
 `object-assign`是一个Node.js模块，它负责将几个对象组合成一个新的对象，[可以查看这里](https://github.com/sindresorhus/object-assign)，他是ES6标准里`Object.assign`的一个ES5的实现。
 
-同时，我们将上节课为了加深对组件树的理解而剥离出来的头部直接加入到`TodoIndex.jsx`里面，因为这个部分并没有逻辑。
+这里我们需要安装它。
 
-``` jsx
-// ./components/TodoIndex.jsx
-
-var React = require('react'),
-	Input = require('./Input'),
-	List = require('./List');
-
-
-var App = React.createClass({
-	getInitialState: function() {
-	    return {
-	    	todoList: {
-		        1467726253744: {
-		            content: '吃饭饭',
-		            complete: 1468216457448
-		        },
-		        1467726253746: {
-		            content: '睡觉觉',
-		            complete: undefined
-		        },
-		        1467726253749: {
-		            content: '打豆豆',
-		            complete: 1468216458448
-		        }
-	        }
-	    };
-	},
-	/**
-	 * 保存数据
-	 * @param  {[number]} id [新加入的数据的id]
-	 * @param  {[content]} content [新加入的数据的内容]
-	 */
-	_save: function(id, content) {
-		var _newList = this.state.todoList;
-		var _newTodo = {
-			content: content,
-			complete: undefined
-		}
-		_newList[id] = _newTodo;
-		// setState方法改动`state`，同时引用了`state`的组件都会重新渲染
-		this.setState({
-			todoList: _newList
-		});
-	},
-	/**
-	 * 删除数据
-	 * @return {[type]} [description]
-	 */
-	_del: function(id) {
-		var _newList = this.state.todoList;
-		delete _newList[id];
-		this.setState({
-			todoList: _newList
-		})
-	},
-	render: function() {
-		return (
-			<div>
-				<h2 className="title">TODO</h2>
-				<Input _onSave={this._save} />
-				<List _onDel={this._del} todoList={this.state.todoList} />
-			</div>	
-		);
-	}
-});
-
-module.exports = App;
+``` sh
+$ npm install object-assign --save
 ```
+
+同时，我们将上节课为了加深对组件树的理解而剥离出来的头部直接加入到`TodoIndex.jsx`里面，因为这个部分并没有逻辑。
 
 可以看到，因为改变了数据的结构，我们对于数据的增删改查更加容易了。对于数据的循环，我们还是用数组来循环，这样比较容易。
 
-同时，为了让数据交互更加接近真实应用场景，我们将数据独立到另外的服务器上，通过`Ajax`来获取。为了使用`Ajax`，我们需要安装`superagent`模块。
+### webpack-dev-server
+
+我们之前都是打开的静态页面，现在，我们希望创建一个服务器来预览页面，所以我们引入`webpack-dev-server`模块。
+
+``` sh
+$ npm install webpack-dev-server -g
+```
+
+同时，在`npm scripts`里添加对应字段
+
+``` js
+"start": "webpack-dev-server --port 5000"
+```
+
+这样，我们输入
+``` sh
+$ npm run start
+```
+
+就能在[http://localhost:5000](http://localhost:5000)打开我们的页面了。
+
+另外，为了让数据交互更加接近真实应用场景，我们将数据独立到另外的服务器上，通过`Ajax`来获取。为了使用`Ajax`，我们需要安装`superagent`模块。
 
 ``` sh
 $ npm install superagent --save
