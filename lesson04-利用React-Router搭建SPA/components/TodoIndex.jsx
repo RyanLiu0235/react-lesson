@@ -36,6 +36,16 @@ var TodoIndex = React.createClass({
 		this.setState({
 			todoList: _newList
 		});
+		superagent
+			.post('http://localhost:5100/api/todo/add')
+			.send({
+				id: id,
+				content: content,
+				complete: undefined
+			})
+			.end(function(res) {
+				console.log(res)
+			})
 	},
 	/**
 	 * 删除数据
@@ -46,7 +56,31 @@ var TodoIndex = React.createClass({
 		delete _newList[id];
 		this.setState({
 			todoList: _newList
-		})
+		});
+		superagent
+			.post('http://localhost:5100/api/todo/delete')
+			.send({
+				id: id
+			})
+			.end(function(res) {
+				console.log(res)
+			});
+	},
+	_complete: function(id) {
+		var _newList = this.state.todoList;
+		_newList[id].complete = Date.now();
+		this.setState({
+			todoList: _newList
+		});
+		superagent
+			.post('http://localhost:5100/api/todo/complete')
+			.send({
+				id: id,
+				complete: Date.now()
+			})
+			.end(function(res) {
+				console.log(res)
+			});
 	},
 	render: function() {
 		return (
@@ -55,7 +89,7 @@ var TodoIndex = React.createClass({
 					TODO列表页
 				</h2>	
 				<Input _onSave={this._save} />
-				<List _onDel={this._del} todoList={this.state.todoList} />
+				<List _onComplete={this._complete} _onDel={this._del} todoList={this.state.todoList} />
 			</div>	
 		);
 	}
