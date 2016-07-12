@@ -2,7 +2,7 @@
   "name": "react-router-SPA",
   "version": "1.0.0",
   "description": "利用React-Router搭建单页应用",
-  "main": "webpack.config.js",
+  "main": "index.jsx",
   "scripts": {
     "build": "webpack --watch -d",
     "start": "webpack-dev-server --port 5000"
@@ -10,10 +10,10 @@
   "author": "liucheng",
   "license": "ISC",
   "dependencies": {
+    "object-assign": "^4.1.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2",
-    "object-assign": "^4.1.0",
     "superagent": "^2.0.0"
   },
   "devDependencies": {
