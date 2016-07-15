@@ -14,6 +14,8 @@
 
 * [lesson04-利用React-Router搭建SPA](https://github.com/stop2stare/react-lesson/tree/master/lesson04-利用React-Router搭建SPA)
 
+* [lesson05-利用Redux架构来实现一个应用](https://github.com/stop2stare/react-lesson/tree/master/lesson05-利用Redux架构来实现一个应用)
+
 ## Reference
 
 * [React中文文档](http://reactjs.cn/react/docs/getting-started.html)
