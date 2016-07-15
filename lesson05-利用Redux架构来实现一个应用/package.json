@@ -1,0 +1,31 @@
+{
+  "name": "rudex-app",
+  "version": "1.0.0",
+  "description": "利用Redux架构来实现一个应用",
+  "main": "index.jsx",
+  "scripts": {
+    "build": "webpack --watch -d",
+    "start": "webpack-dev-server --port 5000"
+  },
+  "author": "liucheng",
+  "license": "ISC",
+  "dependencies": {
+    "object-assign": "^4.1.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.2",
+    "redux": "^3.5.2",
+    "superagent": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1"
+  }
+}
