@@ -3,8 +3,7 @@ var React = require('react');
 var Input = React.createClass({
 	getInitialState: function() {
 	    return {
-			content: '',
-			id: undefined
+			content: ''
 	    };
 	},
 	/**
@@ -14,8 +13,7 @@ var Input = React.createClass({
 		var _v = e.target.value.trim();
 		if (!_v) return;
 		this.setState({
-			content: _v,
-			id: Date.now()
+			content: _v
 		});
 	},
 	/**
@@ -24,11 +22,10 @@ var Input = React.createClass({
 	_save: function() {
 		if (!this.state.content.length) return;
 		// 通过`props`，调用父组件的方法
-		this.props._onSave(this.state.id, this.state.content);
+		this.props._onSave(Date.now(), this.state.content);
 		this.refs.input.value = "";
 		this.setState({
-			content: '',
-			id: undefined
+			content: ''
 		});
 	},
 	render: function() {

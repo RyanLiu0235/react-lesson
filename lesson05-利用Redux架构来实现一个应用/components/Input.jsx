@@ -4,8 +4,7 @@ export default class Input extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			content: '',
-			id: undefined
+			content: ''
 		}
 		this._change = this._change.bind(this);
 		this._save = this._save.bind(this);
@@ -15,8 +14,7 @@ export default class Input extends Component {
 		let _v = e.target.value.trim();
 		if (!_v) return;
 		this.setState({
-			content: _v,
-			id: Date.now()
+			content: _v
 		});
 	}
 
@@ -24,14 +22,13 @@ export default class Input extends Component {
 		if (!this.state.content.length) return;
 		// 通过`props`，调用父组件的方法
 		var text = {
-			id: this.state.id,
+			id: Date.now(),
 			content: this.state.content
 		}
 		this.props._onSave(text);
 		this.refs.input.value = "";
 		this.setState({
-			content: '',
-			id: undefined
+			content: ''
 		});
 	}
 

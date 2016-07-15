@@ -7,13 +7,11 @@ export default class List extends Component {
 		this._onDel = this._onDel.bind(this);
 		this._onComplete = this._onComplete.bind(this);
 	}
-	_onDel(e) {
-		let _id = e.target.parentNode.parentNode.id;
+	_onDel(_id) {
 		this.props._onDel(_id);
 	}
 
-	_onComplete(e) {
-		let _id = e.target.parentNode.parentNode.id;
+	_onComplete(_id) {
 		this.props._onComplete(_id);
 	}
 

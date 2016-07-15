@@ -49,7 +49,7 @@ export default class App extends Component {
 		this.props.dispatch(completeTodo(id))
 	}
 	render() {
-		let { todoList} = this.props;
+		let { todoList } = this.props;
 		return (
 			<div>
 				<h2 className="title">

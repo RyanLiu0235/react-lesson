@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 
 export default class ListItem extends Component {
 	constructor(props) {
@@ -11,10 +10,10 @@ export default class ListItem extends Component {
 		let _type = e.target.className;
 		switch (_type) {
 			case 'complete': 
-				this.props._onComplete(e);
+				this.props._onComplete(e.target.parentNode.parentNode.id);
 				break;
 			case 'delete':
-				this.props._onDel(e);
+				this.props._onDel(e.target.parentNode.parentNode.id);
 				break;
 			default:
 				return;
@@ -28,11 +27,11 @@ export default class ListItem extends Component {
 		}
 		return (
 			<li id={this.props.id} className="table_row">
-				<Link style={_style} to={_url} className="table_control">
+				<a style={_style} href="#" className="table_control">
 					{this.props.content}
-				</Link>
+				</a>
 				<div className="table_action">
-					<span className={this.props.complete ? 'complete' : 'delete'} onClick={this._handleClick}>{this.props.complete ? '完成' : '删除'}</span>
+					<span className={this.props.complete ? 'delete' : 'complete'} onClick={this._handleClick}>{this.props.complete ? '删除' : '完成'}</span>
 				</div>
 			</li>
 		);
