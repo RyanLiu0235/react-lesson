@@ -26,12 +26,20 @@ export default class ListItem extends Component {
 			textDecoration: this.props.complete ? 'line-through' : 'none'
 		}
 		return (
-			<li id={this.props.id} className="table_row">
+			<li 
+				id={this.props.id} 
+				className="table_row"
+			>
 				<a style={_style} href="#" className="table_control">
 					{this.props.content}
 				</a>
 				<div className="table_action">
-					<span className={this.props.complete ? 'delete' : 'complete'} onClick={this._handleClick}>{this.props.complete ? '删除' : '完成'}</span>
+					<span 
+						className={this.props.complete ? 'delete' : 'complete'} 
+						onClick={this._handleClick}
+					>
+						{this.props.complete ? '删除' : '完成'}
+					</span>
 				</div>
 			</li>
 		);

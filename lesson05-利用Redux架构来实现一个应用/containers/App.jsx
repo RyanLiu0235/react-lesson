@@ -1,53 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Input from '../components/Input';
 import List from '../components/List';
 import { addTodo, completeTodo, deleteTodo} from '../actions';
-import superagent from 'superagent';
-import {connect} from 'react-redux';
 import '../public/less/style';
 
-export default class App extends Component {
-	constructor(props) {
-		super(props);
-		this._save = this._save.bind(this);
-		this._del = this._del.bind(this);
-		this._complete = this._complete.bind(this);
-	}
-	_save(text) {
-		superagent
-			.post('http://localhost:5100/api/redux/add')
-			.send(text)
-			.end(function(res) {
-				console.log('dispatch')
-				
-			})
-
-		this.props.dispatch(addTodo(text))
-	}
-	_del(id) {
-		superagent
-			.post('http://localhost:5100/api/redux/delete')
-			.send({
-				id: id
-			})
-			.end(function(res) {
-				
-			});
-
-		this.props.dispatch(deleteTodo(id));
-	}
-	_complete(id) {
-		superagent
-			.post('http://localhost:5100/api/redux/complete')
-			.send({
-				id: id
-			})
-			.end(function(res) {
-				
-			});
-
-		this.props.dispatch(completeTodo(id))
-	}
+class App extends Component {
 	render() {
 		let { todoList } = this.props;
 		return (
@@ -55,21 +14,29 @@ export default class App extends Component {
 				<h2 className="title">
 					TODO列表页
 				</h2>	
-				<Input _onSave={this._save} />
-				<List _onComplete={this._complete} _onDel={this._del} todoList={todoList} />
+				<Input 
+					_onSave={(text) => {this.props.addTodo(text)}} />
+				<List 
+					_onComplete={(id) => {this.props.completeTodo(id)}} 
+					_onDel={(id) => {this.props.deleteTodo(id)}} 
+					todoList={todoList} />
 			</div>	
 		);
 	}
 }
 
-function select(state) {
+function mapStateToProps(state) {
 	return {
 		todoList: state.todo
 	}
 }
 
+function mapDispatchToProps(dispatch) {
+	let a = bindActionCreators({ addTodo, completeTodo, deleteTodo }, dispatch);
+	return a
+}
 
-export default connect(select)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 

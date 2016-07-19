@@ -1,14 +1,50 @@
+import reqwest from 'reqwest';
+
 export const ADD_TODO = 'ADD_TODO';
-export function addTodo(text) {
-	return {type: ADD_TODO, text}
+export const addTodo = (text) => (dispatch, getState) => {
+    reqwest({
+        url: 'http://localhost:5100/api/redux/add',
+        method: 'post',
+        data: text,
+        success: function(res) {
+            dispatch({ type: ADD_TODO, text })
+        },
+        error: function() {
+            console.error('请求失败');
+        }
+    })
 }
+
 
 export const COMPLETE_TODO = 'COMPLETE_TODO';
-export function completeTodo(id) {
-	return {type: COMPLETE_TODO, id}
+export const completeTodo = (id) => (dispatch, getState) => {
+    reqwest({
+        url: 'http://localhost:5100/api/redux/complete',
+        method: 'post',
+        data: {id: id},
+        success: function(res) {
+            dispatch({ type: COMPLETE_TODO, id })
+        },
+        error: function() {
+            console.error('请求失败');
+        }
+    })
 }
 
+
 export const DELETE_TODO = 'DELETE_TODO';
-export function deleteTodo(id) {
-	return {type: DELETE_TODO, id}
+export const deleteTodo = (id) => (dispatch, getState) => {
+    reqwest({
+        url: 'http://localhost:5100/api/redux/delete',
+        method: 'post',
+        data: {id: id},
+        success: function(res) {
+            dispatch({ type: DELETE_TODO, id })
+        },
+        error: function() {
+            console.error('请求失败');
+        }
+    })
+
+
 }

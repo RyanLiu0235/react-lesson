@@ -21,7 +21,6 @@ var todo = [
 
 router.get('/', function(req, res, next) {
     var id = req.query.id;
-    // console.log(todo)
 	return res.json(todo);
 
 });
@@ -29,6 +28,7 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res, next) {
     var newTodo = req.body;
     todo.push(newTodo);
+    res.json({state: 'success'})
 });
 
 function getIndex(id) {
@@ -42,11 +42,13 @@ function getIndex(id) {
 router.post('/delete', function(req, res, next) {
     var id = req.body.id;
     todo.splice(getIndex(id), 1);
+    res.json({state: 'success'})
 });
 
 router.post('/complete', function(req, res, next) {
     var id = req.body.id;
     todo[getIndex(id)].complete = true;
+    res.json({state: 'success'})
 });
 
 module.exports = router;
